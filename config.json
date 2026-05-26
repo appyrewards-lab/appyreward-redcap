@@ -1,0 +1,66 @@
+{
+  "name": "AppyReward for REDCap",
+  "namespace": "AppyReward\\Redcap",
+  "description": "Send AppyReward incentives on survey completion (identified) or show a universal reward link on anonymous surveys.",
+  "framework-version": 16,
+  "authors": [
+    { "name": "AppyReward", "email": "helpdesk@appyreward.com", "institution": "AppyReward" }
+  ],
+  "permissions": [
+    "redcap_survey_complete",
+    "redcap_survey_acknowledgement_page"
+  ],
+  "project-settings": [
+    {
+      "key": "hmac_secret",
+      "name": "AppyReward HMAC Secret (for webhook signature)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "key": "processed_keys",
+      "name": "Processed keys (internal)",
+      "type": "json",
+      "required": false
+    },
+    {
+      "key": "instrument_configs",
+      "name": "Instrument configurations",
+      "type": "sub_settings",
+      "repeatable": true,
+      "sub_settings": [
+        {
+          "key": "instrument",
+          "name": "Instrument name (survey/form)",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "campaign_ref",
+          "name": "AppyReward campaign reference",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "mode",
+          "name": "Survey mode",
+          "type": "radio",
+          "choices": "anonymous,Anonymous (show link)|identified,Identified (send webhook)",
+          "required": true
+        },
+        {
+          "key": "button_label",
+          "name": "Anonymous link label (default: Get your gift)",
+          "type": "text",
+          "required": false
+        },
+        {
+          "key": "email_field",
+          "name": "Email field variable (required for identified mode)",
+          "type": "text",
+          "required": false
+        }
+      ]
+    }
+  ]
+}
