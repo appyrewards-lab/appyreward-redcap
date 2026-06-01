@@ -1,4 +1,4 @@
-# AppyReward for REDCap (External Module) – v0.1.0
+# AppyReward for REDCap (Survey Incentives) – v0.1.0
 
 ## What it does
 
