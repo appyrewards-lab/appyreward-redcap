@@ -1,4 +1,4 @@
-# AppyReward for REDCap (Survey Incentives) – v0.1.0
+# AppyReward for REDCap (Survey Incentives) – v0.1.1
 
 ## What it does
 
@@ -74,10 +74,38 @@ AppyReward recommends that study teams clearly describe the incentive process in
 
 ## Installation
 
-1. Copy the folder `appyreward_redcap_v0.1.0/` into `<REDCAP_ROOT>/modules/`
+1. Download the corrected source, extract it, and name the module folder `appyreward_redcap_v0.1.1/`. Copy that folder into `<REDCAP_ROOT>/modules/`
 2. In REDCap Control Center → External Modules, enable the module at system level
 3. In the REDCap project → External Modules, enable the module at project level
 4. Configure the AppyReward HMAC secret and instrument settings
+
+### Version 0.1.1 activation fix
+
+This release renames the entry-point file to `Redcap.php` and its class to
+`Redcap`, preserving the `AppyReward\Redcap` namespace. No survey or webhook
+behavior is changed.
+
+The installed files must be directly inside the versioned module folder:
+
+```text
+<REDCAP_ROOT>/modules/appyreward_redcap_v0.1.1/
+    Redcap.php
+    config.json
+    README.md
+    LICENSE
+```
+
+Do not use the GitHub-generated repository folder name or add another nested
+folder. For an existing installation, back up the module files and settings,
+install the new version alongside the old version, and select version 0.1.1
+through REDCap's External Modules administration. Keep the module prefix
+`appyreward_redcap` unchanged.
+
+Before production use, confirm that REDCap enables the module without a missing
+`Redcap.php` or class error. In a test project, check the anonymous reward link
+and identified webhook delivery using a test campaign and test email address.
+These integration checks require a REDCap instance; local checks alone do not
+verify activation or reward delivery.
 
 ## Configuration
 
@@ -106,7 +134,7 @@ AppyReward recommends that study teams clearly describe the incentive process in
 ## Requirements
 
 - REDCap 10.2.0 or higher with External Modules enabled
-- PHP 5.4 or higher
+- PHP 7.0 or higher for the module syntax; the installed REDCap and External Modules framework may require a newer PHP version
 - cURL enabled
 - Outbound HTTPS access to `www.appyreward.com`
 
