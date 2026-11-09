@@ -1,9 +1,15 @@
 <?php
+/**
+ * REDCap External Module entry point for AppyReward survey incentives.
+ */
+
 namespace AppyReward\Redcap;
 
 use ExternalModules\AbstractExternalModule;
-
-class AppyRewardRedcap extends AbstractExternalModule
+/**
+ * Matches the final namespace segment required by the External Module loader.
+ */
+class Redcap extends AbstractExternalModule
 {
     /**
      * Identified mode (reliable):
